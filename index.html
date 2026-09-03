@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Margarita — Cabaña Bungalow en Ytu Guasu, Caacupé</title>
+<meta name="description" content="Cabaña bungalow exclusiva en Ytu Guasu, Caacupé. Naturaleza, tranquilidad y confort junto al Arroyo Ytu, para hasta 12 personas.">
+<meta name="theme-color" content="#0F2A1F">
+
+<!-- TODO: reemplazar por el dominio real una vez desplegado en Vercel -->
+<link rel="canonical" href="https://la-margarita.vercel.app/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="La Margarita">
+<meta property="og:locale" content="es_PY">
+<meta property="og:title" content="La Margarita — Cabaña Bungalow en Ytu Guasu, Caacupé">
+<meta property="og:description" content="Cabaña bungalow exclusiva en Ytu Guasu, Caacupé. Naturaleza, tranquilidad y confort junto al Arroyo Ytu, para hasta 12 personas.">
+<meta property="og:url" content="https://la-margarita.vercel.app/">
+<meta property="og:image" content="https://la-margarita.vercel.app/media/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="La Margarita — Cabaña Bungalow en Ytu Guasu, Caacupé">
+<meta name="twitter:description" content="Cabaña bungalow exclusiva en Ytu Guasu, Caacupé. Naturaleza, tranquilidad y confort junto al Arroyo Ytu, para hasta 12 personas.">
+<meta name="twitter:image" content="https://la-margarita.vercel.app/media/og-image.jpg">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "La Margarita",
+  "description": "Cabaña bungalow exclusiva en Ytu Guasu, Caacupé. Naturaleza, tranquilidad y confort junto al Arroyo Ytu, para hasta 12 personas.",
+  "image": "https://la-margarita.vercel.app/media/og-image.jpg",
+  "telephone": "+595982429777",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Ytu Guasu, Caacupé",
+    "addressRegion": "Cordillera",
+    "addressCountry": "PY"
+  },
+  "sameAs": [
+    "https://www.instagram.com/cabanabungalowlamargarita/",
+    "https://www.tiktok.com/@cabanaslamargarita"
+  ]
+}
+</script>
+
+<style>
+  /* ============================================================
+     SISTEMA DE DISEÑO — variables de marca
+     ============================================================ */
+  :root{
+    --forest: #0F2A1F;
+    --forest-2: #1A3C2E;
+    --white: #FFFFFF;
+    --off-white: #F8F7F4;
+    --sage: #8C9A7B;
+    --taupe: #C9BBA0;
+    --cream: #EFE9DD;
+    --champagne: #C9A876;
+    --ink: #20241F;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'DM Sans', sans-serif;
+    font-weight:300;
+    color: var(--ink);
+    background: var(--off-white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  body.menu-open{ overflow:hidden; }
+
+  h1,h2,h3,h4{
+    font-family:'Playfair Display', serif;
+    font-weight:500;
+    color: var(--forest);
+    letter-spacing:0.01em;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img, video{ display:block; max-width:100%; height:auto; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  @media (max-width:640px){ .wrap{ padding:0 20px; } }
+
+  .eyebrow{
+    font-family:'DM Sans', sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color: var(--sage);
+    display:flex; align-items:center; gap:12px;
+  }
+  .eyebrow::before{ content:''; width:28px; height:1px; background: var(--champagne); flex-shrink:0; }
+
+  /* Botones */
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:0.85rem; letter-spacing:0.06em; text-transform:uppercase;
+    padding:16px 34px;
+    border:1px solid var(--champagne);
+    color: var(--forest);
+    background:transparent;
+    transition: background .35s ease, color .35s ease, border-color .35s ease;
+    cursor:pointer;
+  }
+  .btn:hover{ background: var(--champagne); color: var(--white); }
+  .btn.filled{ background: var(--forest); color: var(--off-white); border-color: var(--forest); }
+  .btn.filled:hover{ background: var(--champagne); border-color: var(--champagne); color: var(--forest); }
+
+  /* Divisor arroyo */
+  .stream-divider{ width:100%; overflow:hidden; line-height:0; }
+  .stream-divider svg{ width:100%; height:46px; display:block; }
+  .stream-line{
+    stroke: var(--champagne);
+    stroke-width:1;
+    fill:none;
+    stroke-dasharray: 1400;
+    stroke-dashoffset: 1400;
+    animation: draw-stream 2.8s ease forwards;
+  }
+  @keyframes draw-stream{ to{ stroke-dashoffset:0; } }
+  @media (prefers-reduced-motion: reduce){
+    .stream-line{ animation:none; stroke-dashoffset:0; }
+  }
+
+  /* Placeholders (fallback) */
+  .img-placeholder{
+    background: linear-gradient(135deg, var(--cream), var(--taupe) 140%);
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; color: var(--forest-2);
+    border:1px solid rgba(15,42,31,0.12);
+    overflow:hidden;
+    position:relative;
+  }
+  .img-placeholder span{
+    font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
+    padding:0 24px; opacity:0.75; line-height:1.6;
+  }
+
+  /* Media elements */
+  .media-fill{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+  }
+
+  /* ============================================================
+     HEADER + HAMBURGER
+     ============================================================ */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background: rgba(248,247,244,0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom:1px solid rgba(15,42,31,0.08);
+    transition: background .3s ease;
+  }
+  header.scrolled{
+    background: rgba(248,247,244,0.97);
+  }
+  header .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:84px;
+    transition: height .3s ease;
+  }
+  header.scrolled .wrap{ height:70px; }
+
+  .brand{
+    font-family:'Playfair Display', serif;
+    font-size:1.3rem;
+    letter-spacing:0.04em;
+    color: var(--forest);
+    z-index:110;
+  }
+  .brand em{ font-style:normal; color: var(--champagne); }
+
+  nav ul{
+    list-style:none; display:flex; gap:40px;
+    font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase;
+  }
+  nav a{ opacity:0.75; transition:opacity .25s ease, color .25s ease; }
+  nav a:hover{ opacity:1; color: var(--champagne); }
+  header .btn{ padding:12px 26px; font-size:0.75rem; }
+
+  /* Hamburger button */
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    gap:6px;
+    width:44px; height:44px;
+    background:none; border:none;
+    cursor:pointer;
+    z-index:110;
+    padding:10px;
+  }
+  .hamburger span{
+    display:block;
+    width:22px; height:1.5px;
+    background: var(--forest);
+    transition: transform .3s ease, opacity .3s ease;
+    transform-origin:center;
+  }
+  .hamburger.active span:nth-child(1){ transform: translateY(7.5px) rotate(45deg); }
+  .hamburger.active span:nth-child(2){ opacity:0; }
+  .hamburger.active span:nth-child(3){ transform: translateY(-7.5px) rotate(-45deg); }
+
+  /* Mobile nav overlay */
+  .mobile-nav{
+    position:fixed;
+    inset:0;
+    background: var(--forest);
+    z-index:105;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:28px;
+    opacity:0;
+    visibility:hidden;
+    transition: opacity .35s ease, visibility .35s ease;
+  }
+  .mobile-nav.open{
+    opacity:1;
+    visibility:visible;
+  }
+  .mobile-nav a{
+    font-family:'Playfair Display', serif;
+    font-size:1.6rem;
+    color: var(--off-white);
+    opacity:0.85;
+    transition: opacity .25s ease, color .25s ease;
+  }
+  .mobile-nav a:hover{ opacity:1; color: var(--champagne); }
+  .mobile-nav .btn{
+    margin-top:20px;
+    border-color: var(--champagne);
+    color: var(--champagne);
+  }
+  .mobile-nav .btn:hover{
+    background: var(--champagne);
+    color: var(--forest);
+  }
+
+  @media (max-width:900px){
+    nav{ display:none; }
+    header .btn{ display:none; }
+    .hamburger{ display:flex; }
+  }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero{
+    min-height:100svh;
+    display:flex; align-items:flex-end;
+    position:relative;
+    padding-bottom:90px;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute; inset:0;
+    z-index:0;
+  }
+  .hero-bg img{
+    width:100%; height:100%;
+    object-fit:cover;
+  }
+  .hero-overlay{
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(15,42,31,0.25) 0%, rgba(15,42,31,0.78) 100%);
+    z-index:1;
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    max-width:680px;
+  }
+  .hero .eyebrow{ color: var(--taupe); margin-bottom:26px; }
+  .hero .eyebrow::before{ background: var(--champagne); }
+  .hero h1{
+    font-size: clamp(2.5rem, 6vw, 4.4rem);
+    line-height:1.08;
+    color: var(--white);
+    margin-bottom:22px;
+  }
+  .hero h1 em{ font-style:italic; color: var(--taupe); }
+  .hero p{
+    color: rgba(248,247,244,0.85);
+    font-size:1.05rem;
+    max-width:480px;
+    margin-bottom:36px;
+  }
+  .hero-actions{ display:flex; gap:16px; flex-wrap:wrap; }
+  .hero .btn{ border-color: rgba(248,247,244,0.5); color: var(--white); }
+  .hero .btn:hover{ background: var(--champagne); border-color: var(--champagne); color: var(--forest); }
+  .hero .btn.filled{ background: var(--champagne); border-color: var(--champagne); color: var(--forest); }
+  .hero .btn.filled:hover{ background: var(--white); border-color: var(--white); }
+
+  .hero-note{
+    position:absolute; right:32px; bottom:90px;
+    text-align:right; color: rgba(248,247,244,0.65);
+    font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase;
+    display:none;
+    z-index:2;
+  }
+  @media (min-width:900px){ .hero-note{ display:block; } }
+  @media (max-width:640px){
+    .hero{ padding-bottom:70px; }
+    .hero-actions{ flex-direction:column; align-items:flex-start; }
+    .hero .btn{ width:100%; justify-content:center; }
+  }
+
+  /* ============================================================
+     SECCIONES GENERALES
+     ============================================================ */
+  section{ padding:110px 0; }
+  @media (max-width:640px){ section{ padding:72px 0; } }
+
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .section-head h2{ font-size:clamp(2rem, 4vw, 2.8rem); margin-top:18px; }
+
+  /* Reveal animation */
+  .reveal{
+    opacity:0;
+    transform: translateY(28px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.is-visible{
+    opacity:1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* ============================================================
+     ABOUT / SOBRE
+     ============================================================ */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap:60px;
+    align-items:center;
+  }
+  @media (max-width:900px){
+    .about-grid{ grid-template-columns:1fr; gap:40px; }
+  }
+  .about-media{
+    position:relative;
+    aspect-ratio: 4/5;
+    overflow:hidden;
+    border:1px solid rgba(15,42,31,0.1);
+  }
+  .about-media img{
+    width:100%; height:100%;
+    object-fit:cover;
+  }
+  .about-text p{ color: var(--forest-2); margin-bottom:20px; font-size:1rem; }
+  .about-stats{
+    display:flex; gap:40px; margin-top:36px; flex-wrap:wrap;
+  }
+  .about-stats strong{
+    display:block;
+    font-family:'Playfair Display', serif;
+    font-size:2rem; color: var(--forest); font-weight:500;
+  }
+  .about-stats span{ font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color: var(--sage); }
+
+  /* ============================================================
+     AMENITIES
+     ============================================================ */
+  .amenities{ background: var(--forest); color: var(--off-white); }
+  .amenities .eyebrow{ color: var(--taupe); }
+  .amenities .eyebrow::before{ background: var(--champagne); }
+  .amenities h2{ color: var(--white); }
+  .amenities-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:1px;
+    background: rgba(248,247,244,0.14);
+    border:1px solid rgba(248,247,244,0.14);
+  }
+  @media (max-width:760px){ .amenities-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width:480px){ .amenities-grid{ grid-template-columns: 1fr; } }
+  .amenity{
+    background: var(--forest);
+    padding:38px 30px;
+    transition: background .3s ease;
+  }
+  .amenity:hover{ background: var(--forest-2); }
+  .amenity-icon{
+    width:34px; height:34px; margin-bottom:20px;
+    stroke: var(--champagne); fill:none; stroke-width:1.3;
+  }
+  .amenity h3{ color: var(--white); font-size:1.05rem; margin-bottom:8px; font-weight:500; }
+  .amenity p{ color: rgba(248,247,244,0.6); font-size:0.88rem; }
+
+  /* ============================================================
+     GALERÍA
+     ============================================================ */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows:150px;
+    gap:14px;
+  }
+  .gallery-item{
+    position:relative;
+    overflow:hidden;
+    background: var(--cream);
+  }
+  .gallery-item:nth-child(1){ grid-column: span 4; grid-row: span 3; }
+  .gallery-item:nth-child(2){ grid-column: span 2; grid-row: span 2; }
+  .gallery-item:nth-child(3){ grid-column: span 2; grid-row: span 2; }
+  .gallery-item:nth-child(4){ grid-column: span 3; grid-row: span 2; }
+  .gallery-item:nth-child(5){ grid-column: span 3; grid-row: span 2; }
+
+  .gallery-item img,
+  .gallery-item video{
+    width:100%; height:100%;
+    object-fit:cover;
+    transition: transform .6s ease;
+  }
+  .gallery-item:hover img,
+  .gallery-item:hover video{
+    transform: scale(1.04);
+  }
+
+  @media (max-width:760px){
+    .gallery-grid{
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows:160px;
+      gap:10px;
+    }
+    .gallery-item:nth-child(1){ grid-column: span 2; grid-row: span 2; }
+    .gallery-item:nth-child(n+2){ grid-column: span 1; grid-row: span 1; }
+  }
+  @media (max-width:480px){
+    .gallery-grid{ grid-auto-rows:140px; }
+  }
+
+  /* ============================================================
+     UBICACIÓN
+     ============================================================ */
+  .location{ background: var(--cream); }
+  .location-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  @media (max-width:900px){
+    .location-grid{ grid-template-columns:1fr; gap:40px; }
+  }
+  .location-feature{
+    display:flex; gap:18px; margin-top:28px;
+  }
+  .location-feature svg{
+    width:28px; height:28px; flex-shrink:0;
+    stroke: var(--champagne); fill:none; stroke-width:1.4;
+    margin-top:4px;
+  }
+  .location-feature h4{ font-size:1.05rem; margin-bottom:4px; }
+  .location-feature p{ color: var(--forest-2); font-size:0.92rem; }
+  .map-wrap{
+    aspect-ratio:1/1;
+    overflow:hidden;
+    border:1px solid rgba(15,42,31,0.1);
+  }
+  .map-wrap iframe{ width:100%; height:100%; border:0; }
+
+  /* ============================================================
+     CONTACT / RESERVAS
+     ============================================================ */
+  .contact{
+    text-align:center;
+    background: var(--off-white);
+  }
+  .contact .section-head{ margin-left:auto; margin-right:auto; }
+  .contact p{ max-width:520px; margin:0 auto 36px; color: var(--forest-2); }
+  .contact-details{
+    display:flex; justify-content:center; gap:60px;
+    margin-top:56px; flex-wrap:wrap;
+  }
+  .contact-details span{
+    display:block;
+    font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase;
+    color: var(--sage); margin-bottom:6px;
+  }
+  .contact-details strong{ font-weight:500; color: var(--forest); }
+  @media (max-width:640px){
+    .contact-details{ gap:32px; flex-direction:column; }
+  }
+
+  /* Formulario de reservas */
+  .booking-form{
+    max-width:640px;
+    margin:0 auto;
+    text-align:left;
+  }
+  .form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  @media (max-width:560px){
+    .form-row{ grid-template-columns:1fr; }
+  }
+  .form-field{ margin-bottom:20px; }
+  .form-field label{
+    display:block;
+    font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
+    color: var(--sage); margin-bottom:8px;
+  }
+  .form-field input,
+  .form-field textarea{
+    width:100%;
+    font-family:'DM Sans', sans-serif;
+    font-size:0.95rem;
+    color: var(--ink);
+    background: var(--white);
+    border:1px solid rgba(15,42,31,0.18);
+    padding:13px 16px;
+    transition: border-color .25s ease;
+  }
+  .form-field input:focus,
+  .form-field textarea:focus{
+    outline:none;
+    border-color: var(--champagne);
+  }
+  .form-field textarea{ resize:vertical; min-height:90px; }
+  .form-error{
+    color:#a3402f;
+    font-size:0.85rem;
+    margin:-10px 0 20px;
+    display:none;
+  }
+  .form-error.is-visible{ display:block; }
+  .booking-form .btn{ width:100%; justify-content:center; }
+  @media (min-width:560px){
+    .booking-form .btn{ width:auto; }
+  }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  footer{
+    background: var(--forest);
+    color: rgba(248,247,244,0.7);
+    padding:70px 0 30px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap:60px;
+    margin-bottom:50px;
+  }
+  @media (max-width:700px){
+    .footer-grid{ grid-template-columns:1fr; gap:40px; }
+  }
+  footer .brand{ color: var(--white); font-size:1.4rem; margin-bottom:12px; }
+  footer .brand em{ color: var(--champagne); }
+  .footer-links{
+    display:flex; gap:60px;
+  }
+  .footer-links span{
+    display:block;
+    font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase;
+    color: var(--taupe); margin-bottom:16px;
+  }
+  .footer-links a{
+    display:block;
+    margin-bottom:10px;
+    opacity:0.75;
+    transition: opacity .25s ease, color .25s ease;
+  }
+  .footer-links a:hover{ opacity:1; color: var(--champagne); }
+  .footer-bottom{
+    border-top:1px solid rgba(248,247,244,0.12);
+    padding-top:24px;
+    font-size:0.8rem;
+    opacity:0.6;
+  }
+
+  /* WhatsApp float */
+  .whatsapp-float{
+    position:fixed;
+    bottom:28px; right:28px;
+    z-index:90;
+    background:#25D366;
+    color:white;
+    width:60px; height:60px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 20px rgba(0,0,0,0.2);
+    transition: transform .25s ease, box-shadow .25s ease;
+    font-size:0;
+  }
+  .whatsapp-float svg{ width:28px; height:28px; fill:white; }
+  .whatsapp-float:hover{ transform:scale(1.08); box-shadow:0 8px 28px rgba(0,0,0,0.28); }
+  @media (max-width:640px){
+    .whatsapp-float{ bottom:20px; right:20px; width:54px; height:54px; }
+  }
+
+  /* TikTok float */
+  .tiktok-float{
+    position:fixed;
+    bottom:98px; right:28px;
+    z-index:90;
+    background:#000;
+    color:white;
+    width:60px; height:60px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 20px rgba(0,0,0,0.2);
+    transition: transform .25s ease, box-shadow .25s ease;
+    font-size:0;
+  }
+  .tiktok-float svg{ width:26px; height:26px; fill:white; }
+  .tiktok-float:hover{ transform:scale(1.08); box-shadow:0 8px 28px rgba(0,0,0,0.28); }
+  @media (max-width:640px){
+    .tiktok-float{ bottom:82px; right:20px; width:54px; height:54px; }
+  }
+
+  /* Focus visible for a11y */
+  a:focus-visible, button:focus-visible, .btn:focus-visible{
+    outline:2px solid var(--champagne);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     WHATSAPP FLOTANTE
+     ============================================================ -->
+<a href="https://wa.me/595982429777?text=Hola%2C%20quiero%20consultar%20disponibilidad%20en%20La%20Margarita"
+   target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.001 2C6.478 2 2 6.478 2 12c0 1.85.505 3.673 1.463 5.26L2 22l4.865-1.437A9.953 9.953 0 0 0 12.001 22C17.523 22 22 17.523 22 12S17.523 2 12.001 2zm0 18.13a8.09 8.09 0 0 1-4.129-1.132l-.296-.176-3.06.903.918-2.98-.193-.306a8.1 8.1 0 0 1-1.24-4.31c0-4.475 3.641-8.117 8.117-8.117 2.168 0 4.204.845 5.738 2.379a8.06 8.06 0 0 1 2.377 5.741c-.001 4.476-3.643 8.117-8.117 8.117z"/></svg>
+</a>
+
+<a href="https://www.tiktok.com/@cabanaslamargarita"
+   target="_blank" rel="noopener noreferrer" class="tiktok-float" aria-label="Ver TikTok de La Margarita">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82c-.9-.99-1.4-2.28-1.4-3.6h-3.02v13.9c0 1.5-1.22 2.72-2.72 2.72a2.72 2.72 0 0 1-2.72-2.72 2.72 2.72 0 0 1 2.72-2.72c.28 0 .56.05.82.13V10.4a5.79 5.79 0 0 0-.82-.06 5.75 5.75 0 0 0-5.75 5.75A5.75 5.75 0 0 0 9.46 21.84a5.75 5.75 0 0 0 5.75-5.75V9.02a8.28 8.28 0 0 0 4.83 1.55V7.55c-1.24 0-2.4-.4-3.34-1.08a5.3 5.3 0 0 1-.1-.65z"/></svg>
+</a>
+
+<!-- ============================================================
+     HEADER + MENÚ HAMBURGUESA
+     ============================================================ -->
+<header id="main-header">
+  <div class="wrap">
+    <a href="#top" class="brand">La <em>Margarita</em></a>
+
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="#sobre">La Cabaña</a></li>
+        <li><a href="#amenities">Instalaciones</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+      </ul>
+    </nav>
+
+    <a href="https://wa.me/595982429777?text=Hola%2C%20quiero%20consultar%20disponibilidad%20en%20La%20Margarita" target="_blank" rel="noopener noreferrer" class="btn filled">Reservar</a>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile navigation overlay -->
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+  <a href="#sobre" class="mobile-link">La Cabaña</a>
+  <a href="#amenities" class="mobile-link">Instalaciones</a>
+  <a href="#galeria" class="mobile-link">Galería</a>
+  <a href="#ubicacion" class="mobile-link">Ubicación</a>
+  <a href="https://wa.me/595982429777?text=Hola%2C%20quiero%20consultar%20disponibilidad%20en%20La%20Margarita" target="_blank" rel="noopener noreferrer" class="btn">Reservar</a>
+</div>
+
+<!-- ============================================================
+     HERO  —  foto nocturna de la pileta + cabaña
+     ============================================================ -->
+<section id="top" class="hero">
+  <div class="hero-bg">
+    <picture>
+      <source srcset="/media/b2e7b8ad-800.webp 800w, /media/b2e7b8ad-3388-445a-b428-0324a7f69d69.webp 1500w"
+              sizes="100vw" type="image/webp">
+      <img
+        srcset="/media/b2e7b8ad-800.jpg 800w, /media/b2e7b8ad-3388-445a-b428-0324a7f69d69.jpg 1500w"
+        sizes="100vw"
+        src="/media/b2e7b8ad-3388-445a-b428-0324a7f69d69.jpg"
+        alt="La Margarita de noche — pileta iluminada y cabaña de vidrio"
+        width="1500" height="796"
+        fetchpriority="high"
+        decoding="async">
+    </picture>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="wrap hero-content">
+    <p class="eyebrow">Ytu Guasu · Caacupé · Cordillera</p>
+    <h1>Un refugio de <em>calma</em>,<br>junto al arroyo.</h1>
+    <p>Cabaña bungalow exclusiva en medio de la naturaleza, para hasta 12 personas. A pasos del Arroyo Ytu y sus cascadas.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/595982429777?text=Hola%2C%20quiero%20consultar%20disponibilidad%20en%20La%20Margarita" target="_blank" rel="noopener noreferrer" class="btn filled">Consultar disponibilidad</a>
+      <a href="#galeria" class="btn">Ver galería</a>
+    </div>
+  </div>
+  <p class="hero-note">Ytu Guasu · Caacupé</p>
+</section>
+
+<!-- ============================================================
+     SOBRE LA CABAÑA  —  foto vertical atardecer
+     ============================================================ -->
+<section id="sobre">
+  <div class="wrap about-grid">
+    <div class="about-media reveal">
+      <picture>
+        <source srcset="/media/CEFFFD41-750.webp 750w, /media/CEFFFD41-743B-42CB-842A-C34DCC338897.webp 1500w"
+                sizes="(max-width: 900px) 100vw, 50vw" type="image/webp">
+        <img
+          srcset="/media/CEFFFD41-750.jpg 750w, /media/CEFFFD41-743B-42CB-842A-C34DCC338897.jpg 1500w"
+          sizes="(max-width: 900px) 100vw, 50vw"
+          src="/media/CEFFFD41-743B-42CB-842A-C34DCC338897.jpg"
+          alt="Atardecer sobre La Margarita — vista desde la terraza de madera"
+          width="1500" height="2000"
+          loading="lazy"
+          decoding="async">
+      </picture>
+    </div>
+    <div class="about-text reveal">
+      <p class="eyebrow">Sobre la cabaña</p>
+      <h2>Naturaleza y confort, en un mismo lugar.</h2>
+      <p>La Margarita nació para ser un respiro. Una cabaña bungalow pensada para familias y grupos que buscan desconectarse sin resignar comodidad — con espacios amplios, terminaciones en madera cálida y una conexión directa con el entorno natural de Ytu Guasu.</p>
+      <p>Rodeada de vegetación y a metros del Arroyo Ytu, es el punto de partida ideal para caminatas, mates a la sombra y noches tranquilas bajo el cielo de Cordillera.</p>
+      <div class="about-stats">
+        <div><strong>12+</strong><span>Huéspedes</span></div>
+        <div><strong>1h</strong><span>Desde Asunción</span></div>
+        <div><strong>100%</strong><span>Entorno natural</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stream-divider wrap">
+  <svg viewBox="0 0 1180 46" preserveAspectRatio="none" aria-hidden="true">
+    <path class="stream-line" d="M0 23 C 120 5, 220 41, 340 23 S 560 5, 680 23 S 900 41, 1020 23 S 1180 5, 1180 23"/>
+  </svg>
+</div>
+
+<!-- ============================================================
+     INSTALACIONES / AMENITIES
+     ============================================================ -->
+<section id="amenities" class="amenities">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Instalaciones</p>
+      <h2>Todo lo que necesitás<br>para una estadía perfecta.</h2>
+    </div>
+    <div class="amenities-grid">
+      <div class="amenity">
+        <svg class="amenity-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        <h3>Hasta 12 personas</h3>
+        <p>Espacios amplios pensados para familias y grupos grandes con total comodidad.</p>
+      </div>
+      <div class="amenity">
+        <svg class="amenity-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M8 21h8"/></svg>
+        <h3>Pileta privada</h3>
+        <p>Pileta al aire libre con iluminación nocturna y zona de reposeras.</p>
+      </div>
+      <div class="amenity">
+        <svg class="amenity-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M5 9c1-3 3-4 7-4s6 1 7 4M5 15c1 3 3 4 7 4s6-1 7-4"/></svg>
+        <h3>Quincho y parrilla</h3>
+        <p>Espacio cubierto con parrilla, pensado para reuniones largas en familia.</p>
+      </div>
+      <div class="amenity">
+        <svg class="amenity-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+        <h3>Cocina equipada</h3>
+        <p>Todo lo necesario para cocinar con comodidad durante toda la estadía.</p>
+      </div>
+      <div class="amenity">
+        <svg class="amenity-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17h16M4 12h16M4 7h16"/></svg>
+        <h3>Estacionamiento privado</h3>
+        <p>Lugar seguro dentro de la propiedad para varios vehículos.</p>
+      </div>
+      <div class="amenity">
+        <svg class="amenity-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M5 9c1-3 3-4 7-4s6 1 7 4M5 15c1 3 3 4 7 4s6-1 7-4"/></svg>
+        <h3>Senderos y arroyo</h3>
+        <p>Acceso directo a senderos naturales y al Arroyo Ytu con sus cascadas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALERÍA  —  videos + fotos
+     ============================================================ -->
+<section id="galeria">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Galería</p>
+      <h2>Un vistazo a La Margarita.</h2>
+    </div>
+    <div class="gallery-grid">
+
+      <!-- 1. Principal grande: video nocturno de la cabaña bajo la luna -->
+      <div class="gallery-item reveal">
+        <video
+          controls playsinline preload="metadata"
+          poster="/media/6aeeac68-3ae4-4995-97db-ba6f4694414e.jpg"
+          aria-label="Cabaña iluminada de noche bajo la luna"
+          style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <source src="/media/6aeeac68-3ae4-4995-97db-ba6f4694414e.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- 2. Living / sofá -->
+      <div class="gallery-item reveal">
+        <video
+          controls playsinline preload="metadata"
+          poster="/media/63328049-184c-4b76-86af-24eab57e6c91.jpg"
+          aria-label="Living con sofá y pared de ladrillo"
+          style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <source src="/media/63328049-184c-4b76-86af-24eab57e6c91.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- 3. Dormitorio principal -->
+      <div class="gallery-item reveal">
+        <video
+          controls playsinline preload="metadata"
+          poster="/media/2d0903bc-da59-453c-8fb9-52570b19cc8a.jpg"
+          aria-label="Dormitorio principal con cama de madera"
+          style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <source src="/media/2d0903bc-da59-453c-8fb9-52570b19cc8a.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- 4. Gazebo / jardín -->
+      <div class="gallery-item reveal">
+        <video
+          controls playsinline preload="metadata"
+          poster="/media/b40331a8-8b32-4add-b54a-d679aa2b201f.jpg"
+          aria-label="Gazebo de madera en el jardín con luces"
+          style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <source src="/media/b40331a8-8b32-4add-b54a-d679aa2b201f.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- 5. Camino iluminado + pileta de noche -->
+      <div class="gallery-item reveal">
+        <video
+          controls playsinline preload="metadata"
+          poster="/media/f4b7c747-c582-4694-80c2-f4e1c1d199be.jpg"
+          aria-label="Camino iluminado junto a la pileta de noche"
+          style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <source src="/media/f4b7c747-c582-4694-80c2-f4e1c1d199be.mp4" type="video/mp4">
+        </video>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="stream-divider wrap">
+  <svg viewBox="0 0 1180 46" preserveAspectRatio="none" aria-hidden="true">
+    <path class="stream-line" d="M0 23 C 120 5, 220 41, 340 23 S 560 5, 680 23 S 900 41, 1020 23 S 1180 5, 1180 23"/>
+  </svg>
+</div>
+
+<!-- ============================================================
+     UBICACIÓN Y ENTORNO
+     ============================================================ -->
+<section id="ubicacion" class="location">
+  <div class="wrap location-grid">
+    <div class="location-text reveal">
+      <p class="eyebrow">Ubicación y entorno</p>
+      <h2>En el corazón de Ytu Guasu.</h2>
+      <p>La Margarita está ubicada en Ytu Guasu, Caacupé, en pleno Departamento de Cordillera — una zona conocida por sus arroyos, cerros y la tranquilidad de estar lejos del ruido de la ciudad, sin dejar de estar cerca.</p>
+
+      <div class="location-feature">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M5 9c1-3 3-4 7-4s6 1 7 4M5 15c1 3 3 4 7 4s6-1 7-4"/></svg>
+        <div>
+          <h4>Arroyo Ytu y sus cascadas</h4>
+          <p>A pocos pasos de la propiedad, con acceso directo para disfrutar del agua y el entorno natural.</p>
+        </div>
+      </div>
+      <div class="location-feature">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <div>
+          <h4>A una hora de Asunción</h4>
+          <p>Fácil de llegar en auto, ideal para una escapada de fin de semana.</p>
+        </div>
+      </div>
+    </div>
+    <div class="map-wrap reveal">
+      <iframe
+        src="https://www.google.com/maps?q=Ytu+Guasu,+Caacup%C3%A9,+Paraguay&output=embed"
+        width="100%" height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Ubicación de La Margarita en Ytu Guasu, Caacupé">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RESERVAS / CONTACTO
+     ============================================================ -->
+<section id="reservas" class="contact">
+  <div class="wrap">
+    <p class="eyebrow">Reservas</p>
+    <h2>Reservá tu estadía en La Margarita.</h2>
+    <p>Contanos las fechas que tenés en mente y la cantidad de personas — coordinamos todo directo por WhatsApp.</p>
+
+    <form class="booking-form reveal" id="booking-form" novalidate>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="bf-name">Nombre</label>
+          <input type="text" id="bf-name" name="name" required autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="bf-guests">Cantidad de personas</label>
+          <input type="number" id="bf-guests" name="guests" min="1" max="12" required inputmode="numeric">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="bf-checkin">Check-in</label>
+          <input type="date" id="bf-checkin" name="checkin" required>
+        </div>
+        <div class="form-field">
+          <label for="bf-checkout">Check-out</label>
+          <input type="date" id="bf-checkout" name="checkout" required>
+        </div>
+      </div>
+      <p class="form-error" id="bf-error">El check-out debe ser posterior al check-in.</p>
+      <div class="form-field">
+        <label for="bf-message">Mensaje (opcional)</label>
+        <textarea id="bf-message" name="message" placeholder="Contanos algo más sobre tu estadía..."></textarea>
+      </div>
+      <button type="submit" class="btn filled">Consultar por WhatsApp</button>
+    </form>
+
+    <div class="contact-details">
+      <div>
+        <span>Ubicación</span>
+        <strong>Ytu Guasu, Caacupé, Cordillera</strong>
+      </div>
+      <div>
+        <span>WhatsApp</span>
+        <strong>+595 982 429 777</strong>
+      </div>
+      <div>
+        <span>Check-in / Check-out</span>
+        <strong>A coordinar según disponibilidad</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="brand">La <em>Margarita</em></p>
+        <p>Cabaña bungalow en Ytu Guasu, Caacupé — Departamento de Cordillera, Paraguay.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <span>Navegación</span>
+          <a href="#sobre">La Cabaña</a>
+          <a href="#amenities">Instalaciones</a>
+          <a href="#galeria">Galería</a>
+          <a href="#ubicacion">Ubicación</a>
+        </div>
+        <div>
+          <span>Contacto</span>
+          <a href="https://www.instagram.com/cabanabungalowlamargarita/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.tiktok.com/@cabanaslamargarita" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href="https://wa.me/595982429777" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Cabaña Bungalow La Margarita — Todos los derechos reservados.</div>
+  </div>
+</footer>
+
+<script>
+  // ===== Reveal on scroll =====
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+
+  // ===== Header scroll effect =====
+  const header = document.getElementById('main-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+  // ===== Hamburger / Mobile menu =====
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-nav .btn');
+
+  function toggleMenu(forceClose = false) {
+    const isOpen = mobileNav.classList.contains('open');
+    if (forceClose || isOpen) {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Abrir menú');
+      document.body.classList.remove('menu-open');
+    } else {
+      mobileNav.classList.add('open');
+      hamburger.classList.add('active');
+      hamburger.setAttribute('aria-expanded', 'true');
+      hamburger.setAttribute('aria-label', 'Cerrar menú');
+      document.body.classList.add('menu-open');
+    }
+  }
+
+  hamburger.addEventListener('click', () => toggleMenu());
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => toggleMenu(true));
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+      toggleMenu(true);
+    }
+  });
+
+  // ===== Formulario de reservas → WhatsApp =====
+  const bookingForm = document.getElementById('booking-form');
+  const bfError = document.getElementById('bf-error');
+  const bfCheckin = document.getElementById('bf-checkin');
+  const bfCheckout = document.getElementById('bf-checkout');
+
+  const today = new Date().toISOString().split('T')[0];
+  bfCheckin.min = today;
+  bfCheckout.min = today;
+  bfCheckin.addEventListener('change', () => { bfCheckout.min = bfCheckin.value || today; });
+
+  function formatDate(value) {
+    const [year, month, day] = value.split('-');
+    return `${day}/${month}/${year}`;
+  }
+
+  bookingForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (!bookingForm.reportValidity()) return;
+
+    const name = document.getElementById('bf-name').value.trim();
+    const guests = document.getElementById('bf-guests').value.trim();
+    const checkin = document.getElementById('bf-checkin').value;
+    const checkout = document.getElementById('bf-checkout').value;
+    const message = document.getElementById('bf-message').value.trim();
+
+    if (checkout <= checkin) {
+      bfError.classList.add('is-visible');
+      return;
+    }
+    bfError.classList.remove('is-visible');
+
+    let text = `Hola, quiero consultar disponibilidad en La Margarita.\n`;
+    text += `Nombre: ${name}\n`;
+    text += `Personas: ${guests}\n`;
+    text += `Check-in: ${formatDate(checkin)}\n`;
+    text += `Check-out: ${formatDate(checkout)}`;
+    if (message) text += `\nMensaje: ${message}`;
+
+    const url = `https://wa.me/595982429777?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  });
+</script>
+
+</body>
+</html>
