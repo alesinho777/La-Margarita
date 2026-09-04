@@ -526,6 +526,14 @@
     font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
     color: var(--sage); margin-bottom:8px;
   }
+  .field-note{
+    text-transform:none;
+    letter-spacing:normal;
+    font-size:0.68rem;
+    color: var(--champagne);
+    display:none;
+  }
+  .field-note.is-visible{ display:inline; }
   .form-field input,
   .form-field textarea{
     width:100%;
@@ -939,7 +947,7 @@
           <input type="text" id="bf-name" name="name" required autocomplete="name">
         </div>
         <div class="form-field">
-          <label for="bf-guests">Cantidad de personas</label>
+          <label for="bf-guests">Cantidad de personas <span class="field-note" id="bf-guests-note">(costo adicional)</span></label>
           <input type="number" id="bf-guests" name="guests" min="1" max="12" required inputmode="numeric">
         </div>
       </div>
@@ -1070,6 +1078,12 @@
   const bfError = document.getElementById('bf-error');
   const bfCheckin = document.getElementById('bf-checkin');
   const bfCheckout = document.getElementById('bf-checkout');
+  const bfGuests = document.getElementById('bf-guests');
+  const bfGuestsNote = document.getElementById('bf-guests-note');
+
+  bfGuests.addEventListener('input', () => {
+    bfGuestsNote.classList.toggle('is-visible', Number(bfGuests.value) >= 11);
+  });
 
   const today = new Date().toISOString().split('T')[0];
   bfCheckin.min = today;
