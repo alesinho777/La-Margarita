@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://la-margarita.vercel.app/sitemap.xml
+Sitemap: https://lamargarita-one.vercel.app/sitemap.xml
