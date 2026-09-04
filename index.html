@@ -562,6 +562,59 @@
     .booking-form .btn{ width:auto; }
   }
 
+  .date-field{ position:relative; }
+  .date-field input{ cursor:pointer; background:var(--white); }
+  .date-picker{
+    position:absolute; top:calc(100% + 6px); left:0; z-index:20;
+    width:280px; max-width:calc(100vw - 40px);
+    background:var(--white);
+    border:1px solid rgba(15,42,31,0.18);
+    box-shadow:0 16px 36px rgba(15,42,31,0.18);
+    padding:16px;
+  }
+  .date-picker-head{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:12px;
+  }
+  .date-picker-label{
+    font-family:'Playfair Display', serif; font-size:0.95rem; color:var(--forest);
+    text-transform:capitalize;
+  }
+  .date-picker-nav{
+    background:none; border:1px solid rgba(15,42,31,0.18); color:var(--forest);
+    width:28px; height:28px; font-size:1rem; line-height:1; cursor:pointer;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .date-picker-nav:hover{ border-color:var(--champagne); color:var(--champagne); }
+  .date-picker-weekdays{
+    display:grid; grid-template-columns:repeat(7,1fr);
+    font-size:0.65rem; letter-spacing:0.05em; text-transform:uppercase;
+    color:var(--sage); text-align:center; margin-bottom:6px;
+  }
+  .date-picker-grid{
+    display:grid; grid-template-columns:repeat(7,1fr); gap:2px;
+  }
+  .date-picker-day{
+    aspect-ratio:1; display:flex; align-items:center; justify-content:center;
+    background:none; border:none; font-family:'DM Sans', sans-serif;
+    font-size:0.82rem; color:var(--ink); cursor:pointer;
+    transition:background .2s ease, color .2s ease;
+  }
+  .date-picker-day:hover:not(:disabled){ background:var(--cream); }
+  .date-picker-day.is-today{ color:var(--champagne); font-weight:700; }
+  .date-picker-day.is-selected{ background:var(--forest); color:var(--off-white); }
+  .date-picker-day:disabled{
+    color:rgba(32,36,31,0.3); cursor:not-allowed; text-decoration:line-through;
+  }
+  .date-picker-legend{
+    display:flex; align-items:center; gap:6px; margin-top:12px;
+    font-size:0.68rem; color:var(--sage);
+  }
+  .legend-dot{
+    width:8px; height:8px; display:inline-block;
+    background:rgba(32,36,31,0.3);
+  }
+
   /* ============================================================
      FOOTER
      ============================================================ */
@@ -951,13 +1004,37 @@
         </div>
       </div>
       <div class="form-row">
-        <div class="form-field">
+        <div class="form-field date-field">
           <label for="bf-checkin">Check-in</label>
-          <input type="date" id="bf-checkin" name="checkin" required>
+          <input type="text" id="bf-checkin" name="checkin" placeholder="dd/mm/aaaa" required readonly autocomplete="off">
+          <div class="date-picker" id="bf-checkin-picker" hidden>
+            <div class="date-picker-head">
+              <button type="button" class="date-picker-nav" data-nav="-1" aria-label="Mes anterior">‹</button>
+              <span class="date-picker-label"></span>
+              <button type="button" class="date-picker-nav" data-nav="1" aria-label="Mes siguiente">›</button>
+            </div>
+            <div class="date-picker-weekdays">
+              <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+            </div>
+            <div class="date-picker-grid"></div>
+            <div class="date-picker-legend"><span class="legend-dot legend-busy"></span>No disponible</div>
+          </div>
         </div>
-        <div class="form-field">
+        <div class="form-field date-field">
           <label for="bf-checkout">Check-out</label>
-          <input type="date" id="bf-checkout" name="checkout" required>
+          <input type="text" id="bf-checkout" name="checkout" placeholder="dd/mm/aaaa" required readonly autocomplete="off">
+          <div class="date-picker" id="bf-checkout-picker" hidden>
+            <div class="date-picker-head">
+              <button type="button" class="date-picker-nav" data-nav="-1" aria-label="Mes anterior">‹</button>
+              <span class="date-picker-label"></span>
+              <button type="button" class="date-picker-nav" data-nav="1" aria-label="Mes siguiente">›</button>
+            </div>
+            <div class="date-picker-weekdays">
+              <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+            </div>
+            <div class="date-picker-grid"></div>
+            <div class="date-picker-legend"><span class="legend-dot legend-busy"></span>No disponible</div>
+          </div>
         </div>
       </div>
       <p class="form-error" id="bf-error">El check-out debe ser posterior al check-in.</p>
@@ -1084,15 +1161,137 @@
     bfGuestsNote.classList.toggle('is-visible', Number(bfGuests.value) >= 11);
   });
 
-  const today = new Date().toISOString().split('T')[0];
-  bfCheckin.min = today;
-  bfCheckout.min = today;
-  bfCheckin.addEventListener('change', () => { bfCheckout.min = bfCheckin.value || today; });
-
   function formatDate(value) {
     const [year, month, day] = value.split('-');
     return `${day}/${month}/${year}`;
   }
+
+  // ===== Calendario de disponibilidad (Google Calendar) =====
+  const MONTH_LABELS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  let busyNights = new Set();
+
+  fetch('/api/availability')
+    .then((r) => r.json())
+    .then((data) => { busyNights = new Set(data.busyNights || []); renderPicker(checkinPicker); renderPicker(checkoutPicker); })
+    .catch(() => {});
+
+  function toISO(date) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+  }
+
+  function startOfDay(date) {
+    const d = new Date(date);
+    d.setHours(0, 0, 0, 0);
+    return d;
+  }
+
+  function fromISO(iso) {
+    const [y, m, d] = iso.split('-').map(Number);
+    return new Date(y, m - 1, d);
+  }
+
+  function createDatePicker(input, panel, { minDateFn, isDisabledFn, onSelect }) {
+    const label = panel.querySelector('.date-picker-label');
+    const grid = panel.querySelector('.date-picker-grid');
+    let viewMonth = startOfDay(new Date());
+    viewMonth.setDate(1);
+    let selected = null;
+
+    panel.querySelectorAll('.date-picker-nav').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        viewMonth.setMonth(viewMonth.getMonth() + Number(btn.dataset.nav));
+        render();
+      });
+    });
+
+    function render() {
+      label.textContent = `${MONTH_LABELS[viewMonth.getMonth()]} ${viewMonth.getFullYear()}`;
+      grid.innerHTML = '';
+      const firstWeekday = (viewMonth.getDay() + 6) % 7; // lunes = 0
+      const daysInMonth = new Date(viewMonth.getFullYear(), viewMonth.getMonth() + 1, 0).getDate();
+      const today = startOfDay(new Date());
+
+      for (let i = 0; i < firstWeekday; i++) grid.appendChild(document.createElement('span'));
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const date = new Date(viewMonth.getFullYear(), viewMonth.getMonth(), day);
+        const iso = toISO(date);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'date-picker-day';
+        btn.textContent = String(day);
+
+        const min = minDateFn();
+        const disabled = date < today || (min && date < min) || busyNights.has(iso) || isDisabledFn(iso);
+        if (disabled) btn.disabled = true;
+        if (iso === toISO(today)) btn.classList.add('is-today');
+        if (selected === iso) btn.classList.add('is-selected');
+
+        btn.addEventListener('click', () => {
+          selected = iso;
+          input.value = formatDate(iso);
+          input.dataset.iso = iso;
+          panel.hidden = true;
+          render();
+          onSelect(iso);
+        });
+        grid.appendChild(btn);
+      }
+    }
+
+    input.addEventListener('click', () => {
+      document.querySelectorAll('.date-picker').forEach((p) => { if (p !== panel) p.hidden = true; });
+      panel.hidden = !panel.hidden;
+      if (!panel.hidden) render();
+    });
+
+    return {
+      panel,
+      setSelected(iso) { selected = iso; if (iso) { viewMonth = fromISO(iso); viewMonth.setDate(1); } render(); },
+      render,
+    };
+  }
+
+  const checkinPicker = createDatePicker(bfCheckin, document.getElementById('bf-checkin-picker'), {
+    minDateFn: () => null,
+    isDisabledFn: () => false,
+    onSelect: (iso) => {
+      const checkoutIso = bfCheckout.dataset.iso;
+      if (checkoutIso && checkoutIso <= iso) {
+        bfCheckout.value = '';
+        bfCheckout.dataset.iso = '';
+        checkoutPicker.setSelected(null);
+      }
+      checkoutPicker.render();
+    },
+  });
+
+  const checkoutPicker = createDatePicker(bfCheckout, document.getElementById('bf-checkout-picker'), {
+    minDateFn: () => (bfCheckin.dataset.iso ? fromISO(bfCheckin.dataset.iso) : startOfDay(new Date())),
+    isDisabledFn: (iso) => {
+      const checkinIso = bfCheckin.dataset.iso;
+      if (!checkinIso) return false;
+      const cursor = fromISO(checkinIso);
+      const target = fromISO(iso);
+      while (cursor < target) {
+        if (busyNights.has(toISO(cursor))) return true;
+        cursor.setDate(cursor.getDate() + 1);
+      }
+      return false;
+    },
+    onSelect: () => {},
+  });
+
+  function renderPicker(picker) { picker.render(); }
+
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll('.date-field').forEach((field) => {
+      if (!field.contains(e.target)) field.querySelector('.date-picker').hidden = true;
+    });
+  });
 
   bookingForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -1101,13 +1300,25 @@
 
     const name = document.getElementById('bf-name').value.trim();
     const guests = document.getElementById('bf-guests').value.trim();
-    const checkin = document.getElementById('bf-checkin').value;
-    const checkout = document.getElementById('bf-checkout').value;
+    const checkin = bfCheckin.dataset.iso || '';
+    const checkout = bfCheckout.dataset.iso || '';
     const message = document.getElementById('bf-message').value.trim();
 
-    if (checkout <= checkin) {
+    if (!checkin || !checkout || checkout <= checkin) {
+      bfError.textContent = 'El check-out debe ser posterior al check-in.';
       bfError.classList.add('is-visible');
       return;
+    }
+
+    const cursor = fromISO(checkin);
+    const end = fromISO(checkout);
+    while (cursor < end) {
+      if (busyNights.has(toISO(cursor))) {
+        bfError.textContent = 'El rango elegido incluye fechas no disponibles. Elegí otras fechas.';
+        bfError.classList.add('is-visible');
+        return;
+      }
+      cursor.setDate(cursor.getDate() + 1);
     }
     bfError.classList.remove('is-visible');
 
