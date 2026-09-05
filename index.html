@@ -483,6 +483,37 @@
   .map-wrap iframe{ width:100%; height:100%; border:0; }
 
   /* ============================================================
+     TESTIMONIOS
+     ============================================================ */
+  .testimonials{ background: var(--cream); }
+  .testimonial-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:40px;
+  }
+  @media (max-width:760px){
+    .testimonial-grid{ grid-template-columns:1fr; }
+  }
+  .testimonial-card{
+    background: var(--white);
+    border:1px solid rgba(15,42,31,0.1);
+    padding:44px 38px;
+  }
+  .testimonial-mark{
+    font-family:'Playfair Display', serif;
+    font-size:3rem; line-height:1;
+    color: var(--champagne);
+    display:block; margin-bottom:12px;
+  }
+  .testimonial-quote{
+    font-family:'Playfair Display', serif;
+    font-style:italic; font-size:1.1rem; line-height:1.7;
+    color: var(--forest-2); margin-bottom:22px;
+  }
+  .testimonial-author{
+    font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
+    color: var(--sage);
+  }
+
+  /* ============================================================
      CONTACT / RESERVAS
      ============================================================ */
   .contact{
@@ -560,6 +591,20 @@
   .booking-form .btn{ width:100%; justify-content:center; }
   @media (min-width:560px){
     .booking-form .btn{ width:auto; }
+  }
+
+  .availability-badge{
+    display:inline-flex; align-items:center; gap:10px;
+    margin:0 auto 40px;
+    padding:10px 22px;
+    border:1px solid var(--champagne);
+    background: var(--white);
+    font-size:0.78rem; letter-spacing:0.04em;
+    color: var(--forest);
+  }
+  .availability-badge::before{
+    content:''; width:8px; height:8px; border-radius:50%;
+    background: var(--champagne); flex-shrink:0;
   }
 
   .date-field{ position:relative; }
@@ -731,6 +776,7 @@
         <li><a href="#amenities">Instalaciones</a></li>
         <li><a href="#galeria">Galería</a></li>
         <li><a href="#ubicacion">Ubicación</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
       </ul>
     </nav>
 
@@ -750,6 +796,7 @@
   <a href="#amenities" class="mobile-link">Instalaciones</a>
   <a href="#galeria" class="mobile-link">Galería</a>
   <a href="#ubicacion" class="mobile-link">Ubicación</a>
+  <a href="#testimonios" class="mobile-link">Testimonios</a>
   <a href="https://wa.me/595982429777?text=Hola%2C%20quiero%20consultar%20disponibilidad%20en%20La%20Margarita" target="_blank" rel="noopener noreferrer" class="btn">Reservar</a>
 </div>
 
@@ -812,7 +859,8 @@
       <div class="about-stats">
         <div><strong>12+</strong><span>Huéspedes</span></div>
         <div><strong>1h</strong><span>Desde Asunción</span></div>
-        <div><strong>100%</strong><span>Entorno natural</span></div>
+        <div><strong>100+</strong><span>Estadías realizadas</span></div>
+        <div><strong>2024</strong><span>Recibiendo huéspedes</span></div>
       </div>
     </div>
   </div>
@@ -984,6 +1032,30 @@
 </section>
 
 <!-- ============================================================
+     TESTIMONIOS
+     ============================================================ -->
+<section id="testimonios" class="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Testimonios</p>
+      <h2>Lo que dicen quienes ya vivieron La Margarita.</h2>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card reveal">
+        <span class="testimonial-mark" aria-hidden="true">“</span>
+        <p class="testimonial-quote">Hermoso todo. Mi familia está feliz.</p>
+        <p class="testimonial-author">Huésped — estadía en familia</p>
+      </div>
+      <div class="testimonial-card reveal">
+        <span class="testimonial-mark" aria-hidden="true">“</span>
+        <p class="testimonial-quote">Todo muy lindo dentro y fuera de la cabaña, uno de los lugares más lindos que visitamos hasta ahora. Ya tengo agendado para una próxima visita.</p>
+        <p class="testimonial-author">Huésped recurrente</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      RESERVAS / CONTACTO
      ============================================================ -->
 <section id="reservas" class="contact">
@@ -991,6 +1063,8 @@
     <p class="eyebrow">Reservas</p>
     <h2>Reservá tu estadía en La Margarita.</h2>
     <p>Contanos las fechas que tenés en mente y la cantidad de personas — coordinamos todo directo por WhatsApp.</p>
+
+    <p class="availability-badge" id="next-available" hidden></p>
 
     <form class="booking-form reveal" id="booking-form" novalidate>
       <div class="form-row">
@@ -1079,6 +1153,7 @@
           <a href="#amenities">Instalaciones</a>
           <a href="#galeria">Galería</a>
           <a href="#ubicacion">Ubicación</a>
+          <a href="#testimonios">Testimonios</a>
         </div>
         <div>
           <span>Contacto</span>
@@ -1168,12 +1243,37 @@
 
   // ===== Calendario de disponibilidad (Google Calendar) =====
   const MONTH_LABELS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const WEEKDAY_LABELS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
   let busyNights = new Set();
+  const nextAvailableEl = document.getElementById('next-available');
 
   fetch('/api/availability')
     .then((r) => r.json())
-    .then((data) => { busyNights = new Set(data.busyNights || []); renderPicker(checkinPicker); renderPicker(checkoutPicker); })
+    .then((data) => {
+      busyNights = new Set(data.busyNights || []);
+      renderPicker(checkinPicker);
+      renderPicker(checkoutPicker);
+      showNextAvailable();
+    })
     .catch(() => {});
+
+  function showNextAvailable() {
+    const today = startOfDay(new Date());
+    const cursor = new Date(today);
+    for (let i = 0; i < 730; i++) {
+      if (!busyNights.has(toISO(cursor))) {
+        if (i === 0) {
+          nextAvailableEl.textContent = 'Hoy tenemos disponibilidad';
+        } else {
+          const label = `${WEEKDAY_LABELS[cursor.getDay()]} ${cursor.getDate()} de ${MONTH_LABELS[cursor.getMonth()]}`;
+          nextAvailableEl.textContent = `Próxima fecha libre: ${label}`;
+        }
+        nextAvailableEl.hidden = false;
+        return;
+      }
+      cursor.setDate(cursor.getDate() + 1);
+    }
+  }
 
   function toISO(date) {
     const y = date.getFullYear();
